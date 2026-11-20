@@ -1,0 +1,111 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0">Gestion des produits</h1>
+</div>
+
+@if (message()) {
+  <div class="alert alert-info">{{ message() }}</div>
+}
+
+<div class="row g-4">
+  <div class="col-lg-5">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <h2 class="h5 mb-3">{{ editingId() ? 'Modifier le produit' : 'Ajouter un produit' }}</h2>
+
+        <div class="mb-3">
+          <label class="form-label" for="productName">Nom</label>
+          <input id="productName" class="form-control" [formField]="productForm.name" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="productPhoto">URL ou chemin de photo</label>
+          <input id="productPhoto" class="form-control" [formField]="productForm.photo" />
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="productPrice">Prix</label>
+            <input id="productPrice" type="number" class="form-control" [formField]="productForm.price" />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label" for="productCategory">Catégorie</label>
+            <select id="productCategory" class="form-select" [formField]="productForm.category">
+              <option>PC Gaming</option>
+              <option>Composants</option>
+              <option>Périphériques</option>
+              <option>Écrans</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="releaseDate">Date de sortie</label>
+          <input id="releaseDate" type="date" class="form-control" [formField]="productForm.releaseDate" />
+        </div>
+        <div class="form-check mb-3">
+          <input id="available" type="checkbox" class="form-check-input" [formField]="productForm.available" />
+          <label class="form-check-label" for="available">Disponible</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="description">Description</label>
+          <textarea id="description" class="form-control" rows="3" [formField]="productForm.description"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="processor">Processeur</label>
+          <input id="processor" class="form-control" [formField]="productForm.processor" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="memory">Mémoire</label>
+          <input id="memory" class="form-control" [formField]="productForm.memory" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="storage">Stockage</label>
+          <input id="storage" class="form-control" [formField]="productForm.storage" />
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="submit()">
+          {{ editingId() ? 'Modifier' : 'Ajouter' }}
+        </button>
+        @if (editingId()) {
+          <button type="button" class="btn btn-outline-secondary ms-2" (click)="reset()">Annuler</button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <input
+      class="form-control mb-3"
+      placeholder="Rechercher un produit..."
+      [value]="search()"
+      (input)="search.set($any($event.target).value)"
+    />
+
+    <div class="table-responsive">
+      <table class="table align-middle bg-white">
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>État</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of filteredProducts(); track product.id) {
+            <tr>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price }}</td>
+              <td>
+                <span class="badge" [class.text-bg-success]="product.available" [class.text-bg-danger]="!product.available">
+                  {{ product.available ? 'Disponible' : 'Indisponible' }}
+                </span>
+              </td>
+              <td class="text-end">
+                <button type="button" class="btn btn-sm btn-outline-primary me-2" (click)="edit(product)">Modifier</button>
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="remove(product)">Supprimer</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

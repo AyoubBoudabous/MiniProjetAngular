@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --techtown-dark: #111827;
+  --techtown-blue: #2563eb;
+}
+
+body {
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+}

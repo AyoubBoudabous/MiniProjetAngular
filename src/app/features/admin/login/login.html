@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h3 mb-4">Connexion administrateur</h1>
+
+        @if (errorMessage()) {
+          <div class="alert alert-danger">{{ errorMessage() }}</div>
+        }
+
+        <form (submit)="submit(); $event.preventDefault()" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="username">Nom d’utilisateur</label>
+            <input id="username" class="form-control" [formField]="loginForm.username" />
+            @if (loginForm.username().touched() && loginForm.username().invalid()) {
+              <div class="text-danger small">Nom d’utilisateur requis.</div>
+            }
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label" for="password">Mot de passe</label>
+            <input id="password" type="password" class="form-control" [formField]="loginForm.password" />
+            @if (loginForm.password().touched() && loginForm.password().invalid()) {
+              <div class="text-danger small">Minimum 6 caractères requis.</div>
+            }
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

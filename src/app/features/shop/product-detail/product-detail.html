@@ -1,0 +1,44 @@
+@if (product(); as selected) {
+  <a routerLink="/shop" class="btn btn-link px-0 mb-3">← Retour au catalogue</a>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <img [src]="selected.photo" [alt]="selected.name" class="img-fluid rounded shadow-sm w-100" />
+    </div>
+    <div class="col-lg-6">
+      <span class="badge text-bg-primary">{{ selected.category }}</span>
+      <h1 class="mt-3">{{ selected.name }}</h1>
+      <p class="h4 text-primary">{{ selected.price | tndPrice }}</p>
+      <p [class.text-success]="selected.available" [class.text-danger]="!selected.available" class="fw-semibold">
+        {{ selected.available ? 'Disponible en stock' : 'Actuellement indisponible' }}
+      </p>
+      <p>{{ selected.description }}</p>
+      <p><strong>Date de sortie :</strong> {{ selected.releaseDate | date:'dd/MM/yyyy' }}</p>
+
+      <div class="card mt-4">
+        <div class="card-header fw-bold">Spécifications</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Processeur : {{ selected.specifications.processor }}</li>
+          <li class="list-group-item">Mémoire : {{ selected.specifications.memory }}</li>
+          <li class="list-group-item">Stockage : {{ selected.specifications.storage }}</li>
+        </ul>
+      </div>
+
+      <div class="mt-4">
+        <h2 class="h5">Commentaires</h2>
+        @if (selected.comments.length) {
+          @for (comment of selected.comments; track comment.id) {
+            <div class="border rounded p-3 mb-2">
+              <strong>{{ comment.author }}</strong>
+              <span class="text-warning"> — {{ comment.rating }}/5 ★</span>
+              <p class="mb-0">{{ comment.text }}</p>
+            </div>
+          }
+        } @else {
+          <p class="text-secondary">Aucun commentaire pour ce produit.</p>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="alert alert-warning">Produit introuvable.</div>
+}

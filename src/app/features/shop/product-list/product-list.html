@@ -1,0 +1,66 @@
+<section>
+  <div class="d-flex align-items-end justify-content-between mb-4">
+    <div>
+      <span class="text-primary fw-semibold">Catalogue TechTown</span>
+      <h1 class="h2 mt-1 mb-0">PC et composants</h1>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-body row g-3 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label" for="nameSearch">Nom du produit</label>
+        <input
+          id="nameSearch"
+          class="form-control"
+          [ngModel]="searchName()"
+          (ngModelChange)="searchName.set($event)"
+          placeholder="Exemple : Ryzen"
+        />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label" for="priceSearch">Prix maximum</label>
+        <input
+          id="priceSearch"
+          type="number"
+          min="0"
+          class="form-control"
+          [ngModel]="maxPrice()"
+          (ngModelChange)="maxPrice.set($event === '' ? null : +$event)"
+        />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label" for="categoryFilter">Catégorie</label>
+        <select
+          id="categoryFilter"
+          class="form-select"
+          [ngModel]="category()"
+          (ngModelChange)="category.set($event)"
+        >
+          @for (item of categories(); track item) {
+            <option [value]="item">{{ item }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-2 d-grid">
+        <button type="button" class="btn btn-outline-secondary" (click)="resetSearch()">Effacer</button>
+      </div>
+    </div>
+  </div>
+
+  @if (filteredProducts().length) {
+    <div class="row g-4">
+      @for (product of filteredProducts(); track product.id) {
+        <div class="col-sm-6 col-lg-4">
+          <app-product-card
+            [product]="product"
+            [favorite]="favorites().includes(product.id)"
+            (toggleFavorite)="toggleFavorite($event)"
+          />
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="alert alert-info">Aucun produit ne correspond à ces critères.</div>
+  }
+</section>

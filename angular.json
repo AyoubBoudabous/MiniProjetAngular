@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "MiniProjet": {
+    "TechTown": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -81,10 +81,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MiniProjet:build:production"
+              "buildTarget": "TechTown:build:production"
             },
             "development": {
-              "buildTarget": "MiniProjet:build:development"
+              "buildTarget": "TechTown:build:development"
             }
           },
           "defaultConfiguration": "development"

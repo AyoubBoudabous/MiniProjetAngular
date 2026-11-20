@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": "pc-001",
+      "name": "PC Gamer RTX 4060",
+      "photo": "/images/pc-gamer.jpg",
+      "price": 2799,
+      "category": "PC Gaming",
+      "available": true,
+      "releaseDate": "2026-03-15",
+      "description": "PC gamer performant avec processeur récent, RTX 4060 et refroidissement optimisé.",
+      "specifications": {
+        "processor": "AMD Ryzen 7",
+        "memory": "32 Go DDR5",
+        "storage": "1 To SSD NVMe"
+      },
+      "comments": [
+        {
+          "id": "c1",
+          "author": "Yassine",
+          "text": "Très bonne configuration.",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "id": "gpu-001",
+      "name": "Carte graphique RTX 4070",
+      "photo": "/images/rtx-4070.jpg",
+      "price": 1899,
+      "category": "Composants",
+      "available": true,
+      "releaseDate": "2026-01-20",
+      "description": "Carte graphique haut de gamme pour le jeu en QHD.",
+      "specifications": {
+        "processor": "NVIDIA Ada",
+        "memory": "12 Go GDDR6X",
+        "storage": "PCIe 4.0"
+      },
+      "comments": []
+    },
+    {
+      "id": "cpu-001",
+      "name": "Processeur Ryzen 9",
+      "photo": "/images/ryzen-9.jpg",
+      "price": 1450,
+      "category": "Composants",
+      "available": false,
+      "releaseDate": "2025-11-10",
+      "description": "Processeur 12 cœurs conçu pour le gaming et la création de contenu.",
+      "specifications": {
+        "processor": "AMD Ryzen 9",
+        "memory": "DDR5",
+        "storage": "Socket AM5"
+      },
+      "comments": []
+    },
+    {
+      "name": "rx 7800xt",
+      "photo": "https://api.toutproduits.com/storage/products/uploads/2025/02/new-11-11-2.webp",
+      "price": 1899,
+      "category": "Composants",
+      "available": true,
+      "releaseDate": "2026-11-20T00:00:00.000Z",
+      "description": "2a7sen graphics card fil 3alem",
+      "specifications": {
+        "processor": "",
+        "memory": "",
+        "storage": ""
+      },
+      "comments": [],
+      "id": "5_LVYw4-2_Y"
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin-001",
+      "username": "admin",
+      "password": "admin321",
+      "email": "admin@techtown.tn"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

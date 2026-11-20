@@ -1,0 +1,27 @@
+<h1 class="h3 mb-4">Tableau de bord</h1>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <span class="text-secondary">Produits</span>
+        <div class="display-6 fw-bold">{{ productsCount() }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <span class="text-secondary">Disponibles</span>
+        <div class="display-6 fw-bold text-success">{{ availableCount() }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body d-flex align-items-center">
+        <a class="btn btn-primary w-100" routerLink="/admin/products">Gérer les produits</a>
+      </div>
+    </div>
+  </div>
+</div>

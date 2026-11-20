@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/shop">
+      TechTown
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#shopMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="shopMenu" class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shop" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            Produits
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shop/about" routerLinkActive="active">À propos</a>
+        </li>
+      </ul>
+      @if (isAdmin()) {
+        <a class="btn btn-outline-light btn-sm" routerLink="/admin/dashboard">Administration</a>
+      } @else {
+        <a class="btn btn-outline-light btn-sm" routerLink="/admin/login">Se connecter</a>
+      }
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <router-outlet />
+</main>
